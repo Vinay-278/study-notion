@@ -2,7 +2,8 @@ const User= require("../Models/User");
 const OTP= require("../Models/OTP");
 const bcrypt=require("bcrypt");
 const otpgenerator= require("otp-generator");
-const jwt= require("jsonwebtoken");//send otp
+const jwt= require("jsonwebtoken");
+//send otp
 exports.sendOTP= async(req, res)=>{
     try{
         const {email}= req.body; // fetch email from req body
@@ -202,10 +203,51 @@ exports.login= async (req,res) =>{
 
 //change password
 exports.changePassword= async (req,res) =>{
-    //get data from req body
-    // get old passowrd, newpassword, confirmpassword
-    //validation
-    //update pwd in db
-    //send email - password update
-    //return response
+    try{
+      //get data from req body
+      const {email, password, changePassword, confirmPassword}= req.body;
+      // get old passowrd, newpassword, confirmpassword
+      const user=await User.findOne({email});
+      if(!user){
+            return res.status(500).json({
+                success:false,
+                message:"User email is not valid"
+            })
+      }
+      if(await bcrypt.compare(password, user.password)){
+            if(changePassword == confirmPassword){
+                const hashedPassword=await bcrypt.hash(changePassword,10);
+                user.password=hashedPassword;
+                await user.save();
+            }
+            else{
+                return res.status(500).json({
+                    success:false,
+                    message:"ChangePassword is not match with ConfirmPassword ", 
+                })
+            }
+      }
+      else{
+            return res.status(500).json({
+                success:false,
+                message:"Password is not matched with hashed password",
+            })
+      }
+      //validation
+      //update pwd in db
+      //send email - password update
+      //return response
+      return res.status(200).json({
+            success:true,
+            message:"Successfully Password are updated"
+      })
+    }
+    catch(error){
+        console.log(error.message);
+        return res.status(500).json({
+            success:false,
+            message:"Password is not change"
+        })
+    }
+
 }
