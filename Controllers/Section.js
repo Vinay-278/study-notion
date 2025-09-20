@@ -72,7 +72,7 @@ exports.deleteSection= async (req,res) =>{
         const {sectionId}=req.params
         //use findBydelete
         await Section.findByIdAndDelete(sectionId);
-        //todo:do we need to delete the entry from the corse schema ??
+        //todo:do we need to delete the entry from the course schema ??
         //return res
         return res.status(200).json({
             success:true,

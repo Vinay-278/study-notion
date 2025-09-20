@@ -19,6 +19,7 @@ exports.createSubSection =async(req,res)=>{
         //upload video to cloudinary
         const uploadDetails= await uploadImageToColoudinary(video,process.env.FOLDER_NAME);
         //create a subsection
+        // title kaise aya hai
         const SubsectionDetails= await SubSection.create({
             title:title,
             timeDuration:timeDuration,
