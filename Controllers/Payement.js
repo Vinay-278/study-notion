@@ -90,7 +90,7 @@ exports.verifySignature= async (req,res)=>{
     const signature= req.headers["x-razorpay-signature"];
 
     const shasum= crypto.createHmac("sha256",webhookSecret);
-    shasum.update(json.stringfy(req.body));
+    shasum.update(JSON.stringify(req.body));
     const digest=shasum.digest("hex");
 
     if(signature==digest){
@@ -106,7 +106,7 @@ exports.verifySignature= async (req,res)=>{
                 {new:true}
             );
             if(!enrolledCourse){
-                return res.staus(500).json({
+                return res.status(500).json({
                     success:false,
                     message:"Course not found",
                 });
