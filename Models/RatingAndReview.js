@@ -1,5 +1,6 @@
 const mongoose= require("mongoose");
 
+//Define the RatingAndReview schema
 const ratingAndReviews = new mongoose.Schema({
     user:{
         type:mongoose.Schema.Types.ObjectId,
@@ -16,4 +17,5 @@ const ratingAndReviews = new mongoose.Schema({
     }
 });
 
+//Export the RatingAndReview model
 module.exports = mongoose.model("RatingAndReview", ratingAndReviews);

@@ -1,6 +1,9 @@
+//import the mongoose library
 const mongoose=require("mongoose");
 
+//Define the user schema using the Mongoose Schema constructor
 const userSchema= new mongoose.Schema({
+    //Define the name field with type string ,required, and trimmed
     firstName:{
         type:String,
         required:true,
@@ -11,16 +14,19 @@ const userSchema= new mongoose.Schema({
         required:true,
         trim:true,
     },
+    //Define the email fields with type String ,required, and trimmed
     email:{
         type:String,
         required:true,
         trim:true,
     },
+    //Define the password field with type String and required
     password:{
         type:String,
         required:true,
         trim:true,
     },
+    //Define the role field with type string and enum values of "Admin","Students" or "Visitors"
     accountType:{
         type:String,
         enum:["Admin","Student","Instructor"],
@@ -39,6 +45,7 @@ const userSchema= new mongoose.Schema({
     ],
     image:{
         type:String,
+        //at registration image cannot be uploaded
         required:true,
     },
     token:{
@@ -56,4 +63,5 @@ const userSchema= new mongoose.Schema({
     
 })
 
+//Export the Mongoose model for the user schema , using the name "user"
 module.exports=mongoose.model("User",userSchema)

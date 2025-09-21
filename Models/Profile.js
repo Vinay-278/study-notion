@@ -2,6 +2,7 @@ const mongoose= require("mongoose");
 
 const profileSchema= new mongoose.Schema({
 
+    //Define the Profile schema
     gender:{
         type:String,
         required:true,
@@ -21,4 +22,5 @@ const profileSchema= new mongoose.Schema({
 
 })
 
+//export the profile model
 module.exports= mongoose.model("Profile",profileSchema);
