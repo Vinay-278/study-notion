@@ -1,5 +1,5 @@
 const {instance}=require("../Config/razorpay");
-const Course= require("../models/Course");
+const Course= require("../Models/Course");
 const User= require("../Models/User");
 const mailSender= require("../Utils/mailSender");
 const {courseEnrollementEmail}= require("../templates/courseEnrollement");
@@ -81,3 +81,69 @@ exports.capturePayement= async (req,res) =>{
         })
     }
 };
+
+//verify the signature of razorpay and server
+
+exports.verifySignature= async (req,res)=>{
+    const webhookSecret="12345678";
+
+    const signature= req.headers["x-razorpay-signature"];
+
+    const shasum= crypto.createHmac("sha256",webhookSecret);
+    shasum.update(json.stringfy(req.body));
+    const digest=shasum.digest("hex");
+
+    if(signature==digest){
+        console.log("Payement is Authorsied");
+
+        const {courseId,userId}=req.body.payload.payement.entity.notes;
+        try{
+            //fullfill the action
+            //find the course and enroll the student in it
+            const enrolledCourse= await Course.findByIdAndUpdate(
+                {_id:courseId},
+                {$push:{studentsEnrolled:userId}},
+                {new:true}
+            );
+            if(!enrolledCourse){
+                return res.staus(500).json({
+                    success:false,
+                    message:"Course not found",
+                });
+            }
+            console.log(enrolledCourse);
+            //find the student and add the course to their list enrolled course me
+            const enrolledStudent= await User.findOneAndUpdate(
+                {_id:userId},
+                {$push:{course:courseId}},
+                {new:true}
+            );
+            console.log(enrolledCourse);
+            //mail send kardo confirmation wala 
+            const emailResposne= await mailSender(
+                enrolledStudent.email,
+                "Congrulation from Codehelp",
+                "Congrulation, you are enrolled into new Codehelp Course",
+
+            )
+            console.log(emailResposne);
+            return res.status(200).json({
+                success:true,
+                message:"Signature verified and Course added",
+            })
+        }
+        catch(error){
+            console.log(error);
+            return res.status(500).json({
+                success:false,
+                message:error.message,
+            });
+        }
+    }
+    else{
+        return res.status(400).json({
+            success:false,
+            message:"Invalid request",
+        });
+    }
+}
