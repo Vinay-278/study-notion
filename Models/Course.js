@@ -16,14 +16,18 @@ const courseSchema= new mongoose.Schema({
     whatYouWillLearn:{
         type:String,
     },
-    courseContent:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"Section",
-    },
-    ratingAndReviews:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"RatingAndReview"
-    },
+    courseContent:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"Section",
+        }
+    ],
+    ratingAndReviews:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"RatingAndReview"
+        }
+],
     price:{
         type:Number,
     },
@@ -39,11 +43,25 @@ const courseSchema= new mongoose.Schema({
         required:true,
         ref:"Category",
     },
-    studentsEnrolled:{
-        type:mongoose.Schema.Types.ObjectId,
-        required:true,
-        ref:"User",
-    }
+    studentsEnrolled:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            required:true,
+            ref:"User",
+        }
+    ],
+    instructions:{
+        type:[String],
+    },
+    status:{
+        type:String,
+        enum:["Draft","Published"],
+    },
+    createdAt:{
+        type:Date,
+        default:Date.now,
+    },
+
 });
 
 //Export the Course model

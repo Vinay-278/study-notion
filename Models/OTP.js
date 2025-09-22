@@ -1,6 +1,7 @@
 const mongoose= require("mongoose");
+const mailSender= require("../Utils/mailSender");
 
-const OTPSchema= new mongoose({
+const OTPSchema= new mongoose.Schema({
     email:{
         type:String,
         required:true,
@@ -35,7 +36,11 @@ async function sendVerificationEmail(email,otp){
 
 //Define a post-save hook to send email after the document has been saved
 OTPSchema.pre("save",async function(next){
-    await sendVerificationEmail(this.email, this.otp);
+    console.log("New document saved to the database");
+    //Only send an email when a new document is created
+    if(this.isNew){
+        await sendVerificationEmail(this.email, this.otp);
+    }
     next();
 })
 

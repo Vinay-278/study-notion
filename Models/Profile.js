@@ -5,15 +5,12 @@ const profileSchema= new mongoose.Schema({
     //Define the Profile schema
     gender:{
         type:String,
-        required:true,
     },
     dateOfBirth:{
         type:String,
-        required:true,
     },
     about:{
         type:String,
-        required:true,
     },
     contactNumber:{
         type:String,
