@@ -51,7 +51,7 @@ exports.capturePayement= async (req,res) =>{
     const options= {
         amount:amount*100,
         currency,
-        reciept:Math.random(Date.now().toString()),
+        receipt:Date.now().toString(),
         notes:{
             course_id:course_id,
             userId,
