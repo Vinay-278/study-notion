@@ -75,7 +75,7 @@ exports.signUp= async(req,res) =>{
     if(!firstName || !lastName || !email || !password || !confirmPassword || !otp){
         return res.status(403).json({
             success:false,
-            message:"Password and ConfirmPassword Value does not match, please try again",
+            message:"All information are required",
         })
     }
     //2 password match krlo

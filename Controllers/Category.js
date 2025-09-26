@@ -1,4 +1,4 @@
-const Category= require("../Models/tags");
+const Category= require("../Models/Category");
 
 //create tag ka handler
 
@@ -51,15 +51,3 @@ exports.showAllcategory= async (req, res)=>{
         })
     }
 };
-
-
-
-
-
-
-
-
-
-
-
-
