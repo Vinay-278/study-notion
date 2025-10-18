@@ -1,6 +1,7 @@
+//import the mongoose library
 const mongoose=require("mongoose");
 
-//Define the Course schema 
+//create Course schema using mongoose constructor 
 const courseSchema= new mongoose.Schema({
     courseName:{
         type:String,

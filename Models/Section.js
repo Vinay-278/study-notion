@@ -1,9 +1,10 @@
 const mongoose= require("mongoose")
 
-//Define the Section schema 
+//Define the Section schema using the mongoose constructor
 exports.sectionSchema=new mongoose.Schema({
     sectionName:{
         type:String,
+        required:true,
     },
     SubSection:[
         {

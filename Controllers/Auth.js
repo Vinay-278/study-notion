@@ -1,11 +1,12 @@
-const User= require("../Models/User");
-const OTP= require("../Models/OTP");
-const bcrypt=require("bcrypt");
-const otpgenerator= require("otp-generator");
-const jwt= require("jsonwebtoken");
-const mailSender= require("../Utils/mailSender");
-const {passwordUpdated}=require("../Models/Profile");
-require("dotenv").config();
+//Tmport required modules
+const User= require("../Models/User"); //user model
+const OTP= require("../Models/OTP"); //otp model
+const bcrypt=require("bcrypt"); // for hashing password
+const otpgenerator= require("otp-generator"); // to genrate random otp
+const jwt= require("jsonwebtoken"); //for authentication tokens
+const mailSender= require("../Utils/mailSender"); //Utility to send emails
+const {passwordUpdated}=require("../Models/Profile"); //profile schema function
+require("dotenv").config(); //load environment variables
 
 //send otp for Email Verification
 exports.sendOTP= async(req, res)=>{
@@ -19,13 +20,14 @@ exports.sendOTP= async(req, res)=>{
                 message:"User already registered",
             })
         }
+        // Generate a 6 -digit OTP(only numbers)
         var otp= otpgenerator.generate(6,{
             upperCaseAlphabets:false,
             lowerCaseAlphabets:false,
             specialChars:false,
         })
         console.log("otp genrates ",otp);
-        //check unique otp or not
+        //Ensures OTP is unique(not already in db)
         const result= await OTP.findOne({OTP:otp});
         while(result){
             otp=otpgenerator(6,{
@@ -35,9 +37,8 @@ exports.sendOTP= async(req, res)=>{
             });
             result = await OTP.findOne({ OTP: otp });
         }
-
+        //Save OTP in database with email
         const otpPayload = {email, otp};
-        //cerate an entry for otp
         const otpBody = await OTP.create(otpPayload);
         console.log(otpBody);
 
@@ -45,7 +46,7 @@ exports.sendOTP= async(req, res)=>{
         res.status(200).json({
             success:true,
             message:"OTP Sent Successfully",
-            otp,
+            otp, //(In production, don't send OTP in response)
         })
     }
     catch(error){

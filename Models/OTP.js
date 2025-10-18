@@ -1,6 +1,7 @@
-const mongoose= require("mongoose");
-const mailSender= require("../Utils/mailSender");
+const mongoose= require("mongoose"); //import the mongoose
+const mailSender= require("../Utils/mailSender"); //import the mailsender
 
+//create the otpSchema using mongoose constructor=>email,otp,createdAt
 const OTPSchema= new mongoose.Schema({
     email:{
         type:String,
@@ -14,7 +15,7 @@ const OTPSchema= new mongoose.Schema({
         type:Date,
         default:Date.now(),
         expires:5*60,
-        //This document will be automatically deleted after 5 minutes of its creation time
+        //expires=> This document will be automatically deleted after 5 minutes of its creation time.
     }
 });
 
@@ -25,6 +26,7 @@ async function sendVerificationEmail(email,otp){
     //Define the emails options
     //send the email
     try{
+        //(email, title, otp)=> fields of mailSender
         const mailResponse= await mailSender(email,"verification Email from StudyNotion", otp);
         console.log("Email sent Successfully: ",mailResponse);
     }

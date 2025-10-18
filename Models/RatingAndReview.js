@@ -1,6 +1,7 @@
 const mongoose= require("mongoose");
+//import the mongoose library
 
-//Define the RatingAndReview schema
+//Define the RatingAndReview schema using mongoose constuctor
 const ratingAndReviews = new mongoose.Schema({
     user:{
         type:mongoose.Schema.Types.ObjectId,
