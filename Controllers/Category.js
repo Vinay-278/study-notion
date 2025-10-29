@@ -14,14 +14,14 @@ exports.creatingcategory= async(req,res)=>{
             })
         }
         //create entry in db
-        const tagDetails= await Tag.create({
+        const tagDetails= await Category.create({
             name:name,
             description:description,
         });
         console.log(tagDetails);
         //return response
         return res.status(200).json({
-            success:false,
+            success:true,
             message:"Tag Created Successfully"
         })
     }
@@ -37,7 +37,7 @@ exports.creatingcategory= async(req,res)=>{
 
 exports.showAllcategory= async (req, res)=>{
     try{
-        const allTags= await Tag.find({},{name:true,description:true });
+        const allTags= await Category.find({},{name:true,description:true });
         res.status(200).json({
             success:true,
             message:"All tags returned successfully",

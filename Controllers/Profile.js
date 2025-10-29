@@ -4,7 +4,7 @@ const User=require("../Models/User");
 exports.updateProfile=async (req,res)=>{
     try{
         //get data
-        const {dateOfBirth="",about="",contactNumber="",gender}=req.body;
+        const {dateOfBirth="",about="",contactNumber="",gender=""}=req.body;
         //get userid
         const id=req.user.id;
         //validation
@@ -51,7 +51,7 @@ exports.deleteAccount= async (req,res)=>{
         }
         //delete profile
         await Profile.findByIdAndDelete({_id:userDetails.additionalDetails});
-        //Todo:Hw unenroll user from all enrolled courses
+        //Todo:Hw unenroll user from all enrolled courses 
         //delete user
         await User.findByIdAndDelete({_id:id});
         //return response

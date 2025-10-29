@@ -8,7 +8,7 @@ exports.createSubSection =async(req,res)=>{
         //fetch data from the request body
         const {SectionId,timeDuration,description}=req.body;
         //extract file/video
-        const video= req.files.videoFile;
+        const video= req.files.videoUrl;
         //validation
         if(!SectionId || !timeDuration || !description || !video){
             return res.status(400).json({

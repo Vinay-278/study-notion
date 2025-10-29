@@ -1,4 +1,4 @@
-//Tmport required modules
+//Import required modules
 const User= require("../Models/User"); //user model
 const OTP= require("../Models/OTP"); //otp model
 const bcrypt=require("bcrypt"); // for hashing password
@@ -149,7 +149,7 @@ exports.signUp= async(req,res) =>{
 //login
 exports.login= async (req,res) =>{
     try{
-            //get data from req body
+        //get data from req body
     const {email, password}=req.body;
     //validation of data
     if(!email || !password){
