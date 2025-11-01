@@ -1,12 +1,14 @@
+const crypto=require("crypto")
 const {instance}=require("../Config/razorpay");
 const Course= require("../Models/Course");
 const User= require("../Models/User");
 const mailSender= require("../Utils/mailSender");
-const {courseEnrollementEmail}= require("../templates/courseEnrollement");
-const { default: mongoose } = require("mongoose");
+const {courseEnrollmentEmail}= require("../templates/courseEnrollment");
+const mongoose = require("mongoose");
+
 
 //capture the payement and initiate the Razorpay order
-exports.capturePayement= async (req,res) =>{
+exports.capturePayment= async (req,res) =>{
     //get courseId and UserId
     const {course_id}=req.body;
     const userId=req.user.id;
@@ -60,17 +62,17 @@ exports.capturePayement= async (req,res) =>{
 
     try{
         //initalize the payement using the razorpay
-        const payementResponse= await instance.orders.create(options);
-        console.log(payementResponse);
+        const paymentResponse= await instance.orders.create(options);
+        console.log(paymentResponse);
         //return res
         return res.status(200).json({
             success:true,
             courseName:course.courseName,
             courseDescription:course.courseDescription,
             thumbnail:course.thumbnail,
-            orderId:payementResponse.id,
-            currency:payementResponse.currency,
-            amount:payementResponse.amount,
+            orderId:paymentResponse.id,
+            currency:paymentResponse.currency,
+            amount:paymentResponse.amount,
         })
     }
     catch(error){
@@ -94,9 +96,9 @@ exports.verifySignature= async (req,res)=>{
     const digest=shasum.digest("hex");
 
     if(signature==digest){
-        console.log("Payement is Authorsied");
+        console.log("Payment is Authorsied");
 
-        const {courseId,userId}=req.body.payload.payement.entity.notes;
+        const {courseId,userId}=req.body.payload.payment.entity.notes;
         try{
             //fullfill the action
             //find the course and enroll the student in it

@@ -2,7 +2,7 @@ const mongoose= require("mongoose");
 //import the mongoose library
 
 //create courseProgress using mongoose constructor
-exports.courseProgress= new mongoose.Schema({
+const courseProgress= new mongoose.Schema({
 
     courseID:{
         type:mongoose.Schema.Types.ObjectId,

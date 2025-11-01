@@ -1,7 +1,7 @@
 const Profile=require("../Models/Profile");
 const User=require("../Models/User");
 
-exports.updateProfile=async (req,res)=>{
+exports.updatedProfile=async (req,res)=>{
     try{
         //get data
         const {dateOfBirth="",about="",contactNumber="",gender=""}=req.body;

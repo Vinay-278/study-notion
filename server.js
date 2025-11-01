@@ -12,7 +12,7 @@ const userRoutes=require('./Routes/User');
 //Profile releated routes
 const profileRoutes=require('./Routes/Profile');
 //Payement releated routes
-const PayementRoutes=require('./Routes/Payement');
+const PayementRoutes=require('./Routes/Payment');
 // course releated routes
 const CourseRoutes=require('./Routes/Course');
 //contact form releated routes
@@ -85,7 +85,7 @@ app.use("/api/v1/profile", profileRoutes);
 // /api/v1/auth->course releated routes
 app.use("/api/v1/course", CourseRoutes);
 // /api/v1/auth->payement releated routes
-app.use("/api/v1/payment",PayementRoutes);
+app.use("/api/v1/payment", PayementRoutes);
 // /api/v1/auth->Contact us form ke routes
 app.use("/api/v1/reach",ContactUsRoute);
 
