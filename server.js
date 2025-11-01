@@ -12,7 +12,7 @@ const userRoutes=require('./Routes/User');
 //Profile releated routes
 const profileRoutes=require('./Routes/Profile');
 //Payement releated routes
-const PayementRoutes=require('./Routes/Payements');
+const PayementRoutes=require('./Routes/Payement');
 // course releated routes
 const CourseRoutes=require('./Routes/Course');
 //contact form releated routes
