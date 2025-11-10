@@ -10,7 +10,7 @@ const Footer = () => {
     const Community=["Forums","Chapters","Events"]
 
   return (
-    <div className="text-white flex justify-around text-[15px]">
+    <div className="text-white w-full flex gap-x-12 justify-evenly text-[15px]">
       {/* footer1 */}
       <div>
         <img src={logo} alt="" />
