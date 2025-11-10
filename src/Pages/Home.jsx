@@ -9,6 +9,7 @@ import Footer from "./Footer";
 import LearningLanguageSection from "./LearningLanguageSection";
 import TimelineSection from "./TimelineSection";
 import Instructor from "./Instructor";
+import Explore from "./Explore";
 
 const Home = () => {
   return (
@@ -97,6 +98,9 @@ const Home = () => {
             codeblock={`import numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom sklearn.linear_model import LogisticRegression\n\nX = np.array([1,2,3,4,5])\nY = np.array([1,2,2,2,1])\n\nmodel = LogisticRegression()\nmodel.fit(X,Y)`}
             backgroudGradient={<div className="codeblock1 absolute"></div>}
           />
+        </div>
+        <div>
+          <Explore/>
         </div>
       </div>
       {/* section 2 */}
