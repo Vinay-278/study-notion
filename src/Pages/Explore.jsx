@@ -51,10 +51,10 @@ const Explore = () => {
       </div>
       <div className='lg:h-[150px]'></div>
       {/* Course card ka group */}
-      <div>
+      <div className='flex gap-10 justify-center'>
         {
           courses.map((ele,idx)=>(
-            <CourseCard cardData={ele} currentCard={currentCard} setCurrentCard={setCurrentCard}/>
+            <CourseCard cardData={ele} currentCard={currentCard} setCurrentCard={setCurrentCard} key={idx}/>
           ))
         }
       </div>
