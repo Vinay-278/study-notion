@@ -99,7 +99,7 @@ const Home = () => {
             backgroudGradient={<div className="codeblock1 absolute"></div>}
           />
         </div>
-        <div>
+        <div className="mb-5">
           <Explore/>
         </div>
       </div>

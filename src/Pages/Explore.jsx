@@ -49,15 +49,18 @@ const Explore = () => {
           </div>
         ))}
       </div>
-      <div className='lg:h-[150px]'></div>
-      {/* Course card ka group */}
-      <div className='flex gap-10 justify-center'>
-        {
-          courses.map((ele,idx)=>(
-            <CourseCard cardData={ele} currentCard={currentCard} setCurrentCard={setCurrentCard} key={idx}/>
-          ))
-        }
+      <div className=" hidden lg:h-[150px] lg:block"></div>
+      <div className="absolute flex gap-10 justify-center mb-7 px-3 left-[50%] translate-x-[-50%] translate-y-[-50%]">
+        {courses.map((ele, idx) => (
+          <CourseCard
+            cardData={ele}
+            currentCard={currentCard}
+            setCurrentCard={setCurrentCard}
+            key={idx}
+          />
+        ))}
       </div>
+      {/* Course card ka group */}
     </div>
   );
 }
