@@ -1,6 +1,6 @@
 import React from 'react'
 import logo from '../assets/Logo/Logo-Full-Light.png'
-import { FooterLink2 } from '../../data/footer_link'
+import { FooterLink2 } from '../../../data/footer_link'
 
 const Footer = () => {
 

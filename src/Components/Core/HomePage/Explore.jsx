@@ -1,30 +1,29 @@
-import React, { useState } from 'react'
-import { HomePageExplore } from '../../data/homepage-explore';
-import HighlightText from './HighlightText';
-import CourseCard from './CourseCard'
+import React, { useState } from "react";
+import { HomePageExplore } from "../../../../data/homepage-explore";
+import HighlightText from "./HighlightText";
+import CourseCard from "./CourseCard";
 
-
-const tabName= [
-    "Free",
-    "New to coding",
-    "Most popular",
-    "Skills paths",
-    "Career paths"
-]
+const tabName = [
+  "Free",
+  "New to coding",
+  "Most popular",
+  "Skills paths",
+  "Career paths",
+];
 
 const Explore = () => {
+  const [currentTab, setCurrentTab] = useState(tabName[0]);
+  const [courses, setcourses] = useState(HomePageExplore[0].courses);
+  const [currentCard, setCurrentCard] = useState(
+    HomePageExplore[0].courses[0].heading
+  );
 
-  const [currentTab, setCurrentTab] =useState(tabName[0]);
-  const [courses, setcourses] =useState(HomePageExplore[0].courses);
-  const [currentCard, setCurrentCard] =useState(HomePageExplore[0].courses[0].heading);
-
-  const setMyCards = (value) =>{
-      setCurrentTab(value);
-      const result= HomePageExplore.filter((courses)=>courses.tag==value);
-      setcourses(result[0].courses);
-      setCurrentCard(result[0].courses[0].heading);
-  }
-
+  const setMyCards = (value) => {
+    setCurrentTab(value);
+    const result = HomePageExplore.filter((courses) => courses.tag == value);
+    setcourses(result[0].courses);
+    setCurrentCard(result[0].courses[0].heading);
+  };
 
   return (
     <div>
@@ -63,6 +62,6 @@ const Explore = () => {
       {/* Course card ka group */}
     </div>
   );
-}
+};
 
-export default Explore
+export default Explore;
