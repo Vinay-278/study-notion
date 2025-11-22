@@ -1,15 +1,15 @@
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router";
-import HighlightText from "./HighlightText";
-import CTAButton from "./Button";
+import HighlightText from "../Components/Core/HomePage/HighlightText";
+import CTAButton from "../Components/Core/HomePage/Button";
 import Banner from "../assets/Images/banner1.mp4";
 import CodeBlocks from "../Components/CodeBlocks";
-import Footer from "./Footer";
-import LearningLanguageSection from "./LearningLanguageSection";
-import TimelineSection from "./TimelineSection";
-import Instructor from "./Instructor";
-import Explore from "./Explore";
+import Footer from "../Components/Common/Footer";
+import LearningLanguageSection from "../Components/Core/HomePage/LearningLanguageSection";
+import TimelineSection from "../Components/Core/HomePage/TimelineSection";
+import Instructor from "../Components/Core/HomePage/Instructor";
+import Explore from "../Components/Core/HomePage/Explore";
 
 const Home = () => {
   return (
