@@ -9,7 +9,6 @@ const { createCourse } = require("../Controllers/Course");
 
 //categories controller import
 const {
-  showAllCategories,
   creatingcategory,
   showAllCategory,
 } = require("../Controllers/Category");
@@ -81,7 +80,7 @@ router.post("/updateCourseProgress", auth, isStudent, updatedCourseProgress)
 
 /* CATEGORY ROUTES ONLY BY ADMIN */
 router.post("/createCategory", auth, isAdmin, creatingcategory)
-router.get("/showAllCategories", showAllCategory)
+router.get("/showAllCategories", showAllCategory);
 // router.post("/getCategoryPageDetails", categoryPageDetails)
 
 /* RATING AND REVIEWS */
