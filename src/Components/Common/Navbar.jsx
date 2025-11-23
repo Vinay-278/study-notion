@@ -1,14 +1,15 @@
 import React from "react";
 import logo from "../../assets/Logo/Logo-Full-Light.png";
 import { NavbarLinks } from "../../../data/navbar-links";
-import { Link, matchPath } from "react-router";
+import { Link, matchPath, useLocation } from "react-router-dom";
 import { BsChevronDown } from "react-icons/bs";
 
-const matchRoute = (route) => {
-  return matchPath({ path: route }, location.pathname);
-};
-
 const Navbar = () => {
+  const location= useLocation();
+
+  const matchRoute = (route) => {
+    return matchPath(route, location.pathname);
+  };
   return (
     <div
       className={`flex h-14 items-center text-white justify-center border-b-[1px] border-b-[#2C333F] ${

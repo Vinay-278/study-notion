@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import './App.css'
-import { Route,Routes } from 'react-router'
+import { Route,Routes } from 'react-router-dom'
 import Home from './Pages/Home'
+import About from './Pages/About'
 import "./index.css";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
     <div className="w-screen min-h-screen bg-[#000814] flex flex-col font-inter">
       <Routes>
         <Route path="/" element={<Home />}></Route>
+        <Route path="/about" element={<About/>}></Route>
       </Routes>
     </div>
   );
