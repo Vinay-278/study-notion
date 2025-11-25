@@ -1,8 +1,8 @@
 import React from 'react'
 import ContactFromSection from '../Components/ContactPage/ContactForm'
 import LearningGrid from '../Components/Core/AboutPage/LearningGrid'
-import Quote from '../Components/core/AboutPage/Quote'
-import StatsComponenet from '../Components/core/AboutPage/Stats'
+import Quote from '../Components/Core/AboutPage/Quote'
+import Stats from '../Components/Core/AboutPage/Stats'
 import HighlightText from '../Components/Core/HomePage/HighlightText'
 import ReviewSlider from '../Components/Common/ReviewSlider'
 import Footer from '../Components/Common/Footer'
@@ -39,7 +39,7 @@ const About = () => {
               from all walks of life to unlock their full potential.
             </p>
           </div>
-          <div className="w-[38%] py-16">
+          <div className="w-[38%] py-28">
             <img
               src={AboutImg4}
               alt=""
@@ -49,7 +49,7 @@ const About = () => {
         </div>
       </div>
       <Quote />
-      <StatsComponenet />
+      <Stats />
       <LearningGrid />
       <ContactFromSection />
       <ReviewSlider />

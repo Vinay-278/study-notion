@@ -13,7 +13,7 @@ const content = [
 
 const Quote = () => {
   return (
-    <div className="w-screen flex justify-center">
+    <div className="w-screen flex justify-center gap-x-15 py-20">
       <div className="w-11/12 flex gap-x-10 justify-evenly">
         {content.map((val, key) => (
           <div className="w-[40%] flex flex-col gap-y-5">
