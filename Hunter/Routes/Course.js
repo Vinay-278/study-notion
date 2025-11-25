@@ -5,7 +5,7 @@ const router = express.Router();
 //import the controller
 
 //course controller
-const { createCourse } = require("../Controllers/Course");
+const { createCourse, getCourseDetails } = require("../Controllers/Course");
 
 //categories controller import
 const {
@@ -62,7 +62,7 @@ router.post("/addSubSection", auth, isInstructor, createSubSection)
 // router.get("/getAllCourse", getAllCourse)
 
 //get Details for a specific Course
-// router.post("/getCourseDetails", getCourseDetails)
+router.post("/getCourseDetails", getCourseDetails)
 
 //get Details for a specific Course
 // router.post("/getFullCourseDetails", auth, getFullCourseDetails)
