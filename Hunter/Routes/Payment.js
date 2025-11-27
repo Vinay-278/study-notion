@@ -9,10 +9,11 @@ const {
   isAdmin,
 } = require("../Middlewares/auth");
 
-const { capturePayment, verifySignature } = require("../Controllers/Payment");
+const { capturePayment, verifySignature, sendPayementSuccessEmail } = require("../Controllers/Payment");
 
 router.post("/capturePayment", auth, isStudent, capturePayment);
 router.post("/verifyPayment", auth, isStudent, verifySignature);
+router.post("/sendPayementSuccessEmail", auth, isStudent, sendPayementSuccessEmail);
 
 
 module.exports = router;
