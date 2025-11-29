@@ -6,9 +6,8 @@ const mailSender= require("../Utils/mailSender");
 const {courseEnrollmentEmail}= require("../templates/courseEnrollment");
 const mongoose = require("mongoose");
 const payementSuccessEmail= require("../templates/paymentSuccess")
-const crypto= require("crypto")
 const CourseProgress= require("../Models/CourseProgress");
-const CourseProgress = require("../Models/CourseProgress");
+
 
 //initate the razorpay order
 exports.capturePayement= async(req,res)=>{
@@ -89,7 +88,7 @@ exports.verifyPayement= async(req,res)=>{
     const expectedSignature =crypto.createHmac("sha256", process.env.RAZORPAY_SECRET).update(body.toString()).digest("hex");
     if(expectedSignature===razorpay_signature){
         //enroll karwao Student ko
-        await enrollStudentd(course, userId, res);
+        await enrollStudents(course, userId, res);
         return res.status(200).json({
             success:true,
             message:"Payement Verified",

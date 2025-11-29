@@ -86,7 +86,33 @@ exports.createCourse = async (req, res) => {
   }
 };
 
-//getAllCourses handler###########3
+exports.getAllCourses =async (req, res)=>{
+    try{
+      const allCourse =await Course.find(
+        {status:"published"},
+        {
+          courseName:true,
+          price:true,
+          thumbnail:true,
+          instructor:true,
+          ratingAndReviews:true,
+          studentsEnrolled:true,
+        }
+      ).populate("instructor").exec()
+      return res.status(200).json({
+        success:true,
+        data:allCourse,
+      })
+    }
+    catch(error){
+      console.log(error);
+      return res.status(404).json({
+        success:false,
+        message:"Can't Fetch Course Data",
+        error:error.message,
+      })
+    }
+}
 
 exports.getCourseDetails = async (req, res) => {
   try {

@@ -51,7 +51,7 @@ router.post("/updateSection", auth, isInstructor, updateSection)
 //Delete a section
 router.post("/deleteSection", auth, isInstructor, deleteSection)
 //Edit sub Section
-router.post("/updateSubSection", auth, isInstructor, updatesubSection)
+router.post("/updateSubSection", auth, isInstructor, updateSubSection)
 //Delete sub Section
 
 router.post("/deleteSubSection", auth, isInstructor, deleteSubSection)
@@ -60,7 +60,7 @@ router.post("/deleteSubSection", auth, isInstructor, deleteSubSection)
 router.post("/addSubSection", auth, isInstructor, createSubSection)
 //Get all Registered Course
 
-router.get("/getAllCourse", getAllCourse)
+router.get("/getAllCourse", getAllCourses)
 
 //get Details for a specific Course
 router.post("/getCourseDetails", getCourseDetails)
@@ -69,20 +69,20 @@ router.post("/getCourseDetails", getCourseDetails)
 router.post("/getFullCourseDetails", auth, getFullCourseDetails)
 
 //Edit Course Route
-router.post("/editCourse", auth, isInstructor, editCourse)
+// router.post("/editCourse", auth, isInstructor, editCourse)
 
 //Get all Course Under a Specific Instructor
-router.get("/getInstructorCourses", auth, isInstructor, getInstructorCourses)
+// router.get("/getInstructorCourses", auth, isInstructor, getInstructorCourses)
 
 //Delete a course
-router.delete("/deleteCourse", deleteCourse)
+// router.delete("/deleteCourse", deleteCourse)
 
 router.post("/updateCourseProgress", auth, isStudent, updatedCourseProgress)
 
 /* CATEGORY ROUTES ONLY BY ADMIN */
 router.post("/createCategory", auth, isAdmin, creatingcategory)
 router.get("/showAllCategories", showAllCategory);
-router.post("/getCategoryPageDetails", categoryPageDetails)
+// router.post("/getCategoryPageDetails", categoryPageDetails)
 
 /* RATING AND REVIEWS */
 router.post("/creatingRating", auth, isStudent, createRating)
