@@ -175,19 +175,43 @@ const Navbar = () => {
                   onClick={closeMobileMenu}
                 >
                   <AiOutlineShoppingCart className='text-2xl text-["#AFB2BF]' />
-                  {
-                    totalItems >0 && (
-                      <span className='absolute -bottom-2 -right-2 grid h-5 w-5 place-items-center overflow-hidden rounded-full bg-[] text-center text-xs font-bold text-yellow-500'>
-                        {totalItems}
-                      </span>
-                    )
-                  }
-                </Link>
-              )}
+                  {totalItems > 0 && (
+                    <span className="absolute -bottom-2 -right-2 grid h-5 w-5 place-items-center overflow-hidden rounded-full bg-[] text-center text-xs font-bold text-yellow-500">
+                      {totalItems}
+                    </span>
+                  )}
+                  </Link>
+                  )}
+                  {!token && (
+                    <div className="flex flex-col items-center gap-y-4">
+                      <Link to="/login" onClick={closeMobileMenu}>
+                        <button
+                          className={`rounded-md px-4 w-[90px] py-2 transition duration-300 hover:scale-95 ${
+                            matchRoute("/login")
+                              ? "bg-[#161D29] text-white"
+                              : "bg-yellow-200 text-black hover:bg-[#161D29] hover:text-white"
+                          }`}
+                        >
+                          Login
+                        </button>
+                      </Link>
+                      <Link to="/signup" onClick={closeMobileMenu}>
+                        <button
+                          className={`rounded-md px-4 w-[90px] py-2 transition duration-300 hover:scale-95 ${
+                            matchRoute("/signup")
+                              ? "bg-[#161D29] text-white"
+                              : "bg-blue-200 text-white hover:bg-[#161D29] hover:text-gray-300"
+                          }`}
+                        >Sign Up</button>
+                      </Link>
+                    </div>
+                  )}
+                  {token && <ProfileDropDown/>}
             </div>
           </div>
         </div>
       </div>
+      <ProgressBar/>
     </div>
   );
 }
