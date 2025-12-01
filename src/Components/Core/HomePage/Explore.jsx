@@ -35,7 +35,7 @@ const Explore = () => {
         Learn to build anything you can imagine
       </div>
       <div className="flex rounded-full bg-[#161D29] mb-5 mt-5 px-1 py-1">
-        {tabName.map((ele, key) => (
+        {tabName.map((ele, idx) => (
           <div
             className={`text-[16px] items-center ${
               currentTab == ele
@@ -43,6 +43,7 @@ const Explore = () => {
                 : "text-[#999DAA]"
             } rounded-full transition-all duration-200 cursor-pointer hover:bg-[#000814] hover:text-[#F1F2FF] px-7 py-3 `}
             onClick={() => setMyCards(ele)}
+            key={idx}
           >
             {ele}
           </div>

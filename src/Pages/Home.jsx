@@ -13,7 +13,7 @@ import Explore from "../Components/Core/HomePage/Explore";
 import Navbar from "../Components/Common/Navbar";
 const Home = () => {
   return (
-    <div>
+    <div className="overflow-hidden">
       <Navbar/>
       {/* section 1 */}
       <div className="relative mx-auto flex flex-col w-11/12 items-center justify-between gap-8 text-white">
@@ -151,9 +151,9 @@ const Home = () => {
       </div>
 
       {/* Footer */}
-      <div className="flex border w-11/12 mx-auto">
+      {/* <div className="flex border w-11/12 mx-auto">
         <Footer />
-      </div>
+      </div> */}
     </div>
   );
 };
