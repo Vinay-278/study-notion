@@ -39,7 +39,8 @@ const Navbar = () => {
       setLoading(true);
       try {
         const res = await apiConnector("GET", categories.CATEGORIES_API);
-        setSubLinks(res.data.data);
+        console.log(res.data.categories);
+        setSubLinks(res.data.categories);
       } catch (error) {
         console.log("Could not fetch Categories.", error);
       }
@@ -99,7 +100,7 @@ const Navbar = () => {
                         : "text-gray-300 hover:text-yellow-500"
                     }`}
                     onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
+                    // onMouseLeave={handleMouseLeave}
                   >
                     {title}
                     <BsChevronDown
@@ -113,9 +114,9 @@ const Navbar = () => {
                       <div className="absolute left-1/2 top-full mt-2 w-52 -translate-x-1/2 bg-white text-black p-4 rounded-lg shadow-lg z-40">
                         {loading ? (
                           <p>Loading...</p>
-                        ) : subLinks.length ? (
+                        ) : subLinks?.length ? (
                           subLinks
-                            .filter((sub) => sub?.course?.length > 0)
+                            // .filter((sub) => sub?.course?.length > 0)
                             .map((sub, i) => (
                               <Link
                                 key={i}
@@ -127,6 +128,7 @@ const Navbar = () => {
                                 onClick={toggleDropdown}
                               >
                                 {sub.name}
+                                {console.log(sub.name)}
                               </Link>
                             ))
                         ) : (

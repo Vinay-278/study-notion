@@ -61,7 +61,7 @@ app.use(cookieParser());
 //iska matlab backend (4000) aur frontend (3000) apas me communicated kar sake
 app.use(
     cors({
-        origin:"http://localhost:3000",//frontend ka origin
+        origin:"http://localhost:5173",//frontend ka origin
         credentials:true,//cookies/auth header send karne ki permission
     })  
 )
