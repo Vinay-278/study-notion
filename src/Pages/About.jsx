@@ -1,5 +1,5 @@
 import React from 'react'
-import ContactFromSection from '../Components/ContactPage/ContactForm'
+import ContactFormSection from '../Components/Core/AboutPage/ContactFormSection'
 import LearningGrid from '../Components/Core/AboutPage/LearningGrid'
 import Quote from '../Components/Core/AboutPage/Quote'
 import Stats from '../Components/Core/AboutPage/Stats'
@@ -48,12 +48,12 @@ const About = () => {
           </div>
         </div>
       </div>
-      <Quote />
-      <Stats />
-      <LearningGrid />
-      <ContactFromSection />
-      <ReviewSlider />
-      <Footer />
+      {/* <Quote /> */}
+      {/* <Stats /> */}
+      {/* <LearningGrid /> */}
+      <ContactFormSection />
+      {/* <ReviewSlider /> */}
+      {/* <Footer /> */}
     </div>
   );
 }
